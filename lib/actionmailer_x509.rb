@@ -138,6 +138,7 @@ module ActionMailer #:nodoc:
          newm.to = mail.to
          newm.cc = mail.cc
          newm.from = mail.from
+         newm.return_path = mail.return_path
          newm.mime_version = mail.mime_version
          newm.date = mail.date
 #        newm.body = "This is an S/MIME signed message\n"
