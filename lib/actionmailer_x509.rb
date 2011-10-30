@@ -123,7 +123,7 @@ module ActionMailer #:nodoc:
         # Sign and crypt the mail
 
         # NOTE: the one following line is the slowest part of this code, signing is sloooow
-        p7 = mail.encoded
+        p7 = mail.encoded + "\n"
         p7 = OpenSSL::PKCS7.sign(sign_cert,sign_prv_key, p7, [], OpenSSL::PKCS7::DETACHED) if should_sign?
         p7 = OpenSSL::PKCS7.encrypt([crypt_cert], (should_sign? ? OpenSSL::PKCS7::write_smime(p7) : p7), cipher, nil) if should_crypt?
         smime0 = OpenSSL::PKCS7::write_smime(p7)
