@@ -135,9 +135,9 @@ module ActionMailer #:nodoc:
 #        newm.content_type = 'multipart/signed; protocol="application/x-pkcs7-signature"; micalg=sha1; '
          newm.delivery_method(mail.delivery_method.class, mail.delivery_method.settings)
          newm.subject = mail.subject
-         newm.to = mail.to
-         newm.cc = mail.cc
-         newm.from = mail.from
+         newm.to = mail[:to].try :decoded
+         newm.cc = mail[:cc].try :decoded
+         newm.from = mail[:from].try :decoded
          newm.return_path = mail.return_path
          newm.mime_version = mail.mime_version
          newm.date = mail.date
