@@ -134,6 +134,7 @@ module ActionMailer #:nodoc:
         # We need to overwrite the content-type of the mail so MUA notices this is a signed mail
 #        newm.content_type = 'multipart/signed; protocol="application/x-pkcs7-signature"; micalg=sha1; '
          newm.delivery_method(mail.delivery_method.class, mail.delivery_method.settings)
+         newm.header.charset = "UTF-8"
          newm.subject = mail.subject
          newm.to = mail[:to].try :decoded
          newm.cc = mail[:cc].try :decoded
